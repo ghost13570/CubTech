@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <style>
+     body{
+         background-color: darkgrey;
+         font-size: 25px;
+         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     
+    
+     }
+    
+     #head{
+    font-size: 40px;
+    font-weight: lighter;
+    text-align: center;
+    font-family:   Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+td.vld{
+         color: red;
+       }
+       #sub{
+           height: 50px;
+           width: 80px;
+              
+        
+          }
+          table{
+              border: white 3px solid;
+              background-color: black;
+              color: white;
+              border-radius: 10px;
+
+          }
+          .signup input[type="text"], [type="email"], [type="password"], [type="date"]{
+            border-bottom: 1px solid white;
+       background: transparent;
+       outline: none;
+       height: 40px;
+       color: white;
+       font-size: 16px;
+          }
+          select{
+              background-color: black;
+              color: white;
+              height: 40px;
+          }
+          .signup input[type="button"]
+          {
+            background-color: #fb2525;
+      height: 40px;
+      font-size: 18px;
+      border-radius: 20px;
+      color:white;
+      width: 100%;
+          }
+       .signup [type="button"]:hover
+       {
+           color: black;
+           background-color: #ffc107;
+       }
+     
+      .back input[type="button"]{
+          height: 50px;
+          width: 80px;
+          font-size: 18px;
+          color: white;
+          background-color: #fb2525;
+      }
+      .back input[type="button"]:hover{
+color: black;
+background-color: #ffc107;
+      }
+    </style>
+    <script>
+       function validate()
+       {
+            if(document.form1.fname.value=="")
+            {
+            document.getElementById("fn").innerHTML="*Please enter your name";
+            document.form1.FName.focus();
+					return false;
+            }
+            else{
+                document.getElementById("fn").innerHTML="";
+            }
+            if(document.form1.lname.value=="")
+            {
+                document.getElementById("ln").innerHTML="*Please enter your last name";
+                document.form1.lname.focus();
+                return false;
+            }
+            else{
+                document.getElementById("ln").innerHTML="";
+            }
+            if(document.form1.email.value=="")
+            {
+                document.getElementById("em").innerHTML="*Please enter email address"
+            }
+            else{
+                document.getElementById.innerHTML=""
+            }
+            var emailID=document.form1.email.value;
+				atpos=emailID.indexOf("@");
+				dotpos=emailID.lastIndexOf(".");
+				if(atpos<1 || (dotpos-atpos < 2))
+				{
+					document.getElementById("em").innerHTML="*Please Enter Proper Email Address";
+					document.form1.email.focus();
+                    return false;}
+            else{
+                document.getElementById("em").innerHTML="";
+            }
+            var num=document.form1.mobno.value;
+				if(num=="")
+				{
+					document.getElementById("mn").innerHTML="*Please enter mobile no.";
+					document.form1.mobno.focus();
+					return false;
+				} 
+				else if(num.length != 10 || isNaN(num))
+				{
+					document.getElementById("mn").innerHTML="*Please enter valid mobile no.";
+					document.form1.mobno.focus();
+					return false;
+				}
+				else
+				{
+					document.getElementById("mn").innerHTML="";
+                }
+                if(document.form1.uname.value=="")
+                {
+                    document.getElementById("un").innerHTML="*Please enter username";
+                    document.form1.mobno.focus();
+					return false;
+                }
+                else{
+                    document.getElementById("un").innerHTML=""
+                }
+                var p=document.form1.psword.value;
+				var cp=document.form1.cpsword.value;
+				if(p=="" || p.length<=6)
+				{
+					document.getElementById("pw").innerHTML="*Please Enter Password more than 6 characters";
+					document.form1.psword.focus();
+					return false;
+				}
+				else
+				{
+					document.getElementById("pw").innerHTML="";	
+				}
+				if(p != cp)
+				{
+					document.getElementById("cpw").innerHTML="*Password and Confirm password must be same";
+					var cp=document.form1.cpsword.focus();
+					return false;
+				}
+				else
+				{
+					document.getElementById("cpw").innerHTML="";
+				}
+				
+       }
+       function goback()
+  {
+      window.history.back()
+  }
+    </script>   
+   
+</head>
+<body>
+   <div class="back"> <input type="button" value="Go Back" onclick="goback()"></div>
+    <center><img src="cubtechlogo - Copy.jpg"></center>
+    <br><div id="head">Sign up</div>
+    
+    <center>
+        <div class="signup">
+        <form action="" method="POST" name="form1" onsubmit ="return(validate());">
+        <table>
+    <tr><td>First name:<input type="text" placeholder="enter your first name" id="fname" autofocus></td>
+    <td id="fn" class="vld"></td>
+    </tr>
+    <tr><td>Last name:<input type="text" placeholder="enter your last name"id="lname"></td>
+    <td id="ln" class="vld"></td>
+    </tr>
+    <tr><td>Gender:<input type="radio" value="male" name="gender" id="male" >male
+        <input type="radio" value="female" name="gender"id="female">Female</td></tr>
+    
+    <tr><td>Date of birth:<input type="date" id="date" ></td></tr>
+    
+    <tr><td>Nationality:<select id="country">
+    <option id="india" value="Indian">Indian</option>
+    <option id="us" value="American">American</option>
+    <option id="brit" value="British">British</option>
+    <option id="chine" value="Chinese">Chinese</option>
+    </select></td></tr>
+    
+    <tr><td>E-mail:<input type="email"  placeholder="enter your e-mail" id="email"></td>
+    <td id="em" class="vld"></td>
+    </tr>
+    <tr><td>Mobile no.:<input type="text" placeholder="enter you mobile no." id="mobno"></td>
+    <td id="mn" class="vld"></td>
+    </tr>
+    <tr><td>Username:<input type="text"  placeholder="enter the username" id="uname"></td>
+    <td id="un" class="vld"></td>
+    </tr>
+    <tr><td>Password:<input type="password"  placeholder="enter the password" id="psword"></td>
+    <td id="pw" class="vld"></td>
+    </tr>
+    <tr><td>Confirm Password<input type="password" placeholder="confirm your password" id="cpsword"></td>
+    <td id="cpw" class="vld"></td>
+    </tr>
+    <br>
+    <tr><td><input type="button" value="Register" onclick="validate()" > </td></tr>
+</table>
+</form>  
+</div>
+</center>
+    
+    <br>
+    <br>
+    
+   
+    
+</body>
+</html>
